@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Image Alter - Image Resizer</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="imageResizer.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <img src="LogoBig.png" alt="">
+                <a href="#">
+                    Love Image Alter
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="imageResizer.html">Image Resizer</a></li>
+                <li><a href="convert.html">Convert Image</a></li>
+                <li><a href="index.html">Home</a></li>
+                <div>
+                    <li><input type="checkbox" class="check" onclick="changeBrightness()"></li>
+                </div>
+                <div class="More">
+                    <li class="dropdown">
+                        <a href="#">Tools<span>&#9660;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="imageResizer.html">Image Resizer</a></li>
+                            <li><a href="convert.html">Convert Image</a></li>
+                            <li><a href="index.html">Home</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+    <section class="tools">
+        <div class="tools-view">
+            <h1 class="resize-settings">Color picker Settings</h1>
+            <div class="file"><input type="file" accept=".jpg, .jpeg, .png, .gif" id="imageinput"></div>
+            <div class="size-containers">
+                <div>
+                    <h1 id="r-label">Red</h1> <br>
+                    <input type="number" id="r" min="1" readonly value="1" max="255">
+                </div>
+                <div>
+                    <h1 id="g-label">Green</h1>  <br>
+                    <input type="number" min="1" id="g" readonly value="1" max="255">
+                </div>
+                <div>
+                    <h1 id="b-label">Blue</h1>  <br>
+                    <input type="number" min="1" id="b"readonly value="1" max="255">
+                </div>
+
+            </div>
+            <div class="size-containers">
+                <div>
+                    <h1 id="r-label">Hue</h1> <br>
+                    <input type="number" id="h" min="1" readonly value="1" max="360">
+                </div>
+                <div>
+                    <h1 id="g-label">Saturation</h1>  <br>
+                    <input type="number" min="1" id="s" readonly value="1" max="100">
+                </div>
+                <div>
+                    <h1 id="b-label">Lightness</h1>  <br>
+                    <input type="number" min="1" id="l" readonly value="1" max="100">
+                </div>
+
+            </div>
+            <div class="size-containers">
+                <div>
+                    <h1>Hex</h1>
+                    <input type="text" id="hex">
+                </div>
+            </div>
+            <div class="size-containers">
+                <input type="color" class="color" id="color">
+            </div>
+            <div class="copy">
+                <h1>Copy</h1> <br>
+            </div>
+            <div class="export">
+                <select id="colroformat">
+                    <option value="hsl">HSL</option>
+                    <option value="rgb">RGB</option>
+                    <option value="hex">HEX</option>
+                </select>
+                <button onclick="Copy()">COPY</button>
+            </div>
+        </div>
+        <div class="image-view">
+            <img src="" alt="" id="outputimage">
+        </div>
+    </section>
+    <script src="colopicker.js">
+
+
+    </script>
+</body>
+</html>

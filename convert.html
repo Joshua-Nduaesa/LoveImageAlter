@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Image Alter - Image Resizer</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="imageResizer.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="site-name">
+                <img src="LogoBig.png" alt="">
+                <a href="#">
+                    Love Image Alter
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li ><a href="index.html">Home</a></li>
+                <li><a href="imageResizer.html">Image Resizer</a></li>
+                <li><a href="">Color Picker</a></li>
+                <div>
+                    <li><input type="checkbox" class="check" onclick="changeBrightness()"></li>
+                </div>
+                <div class="More">
+                    <li class="dropdown">
+                        <a href="#">Tools<span>&#9660;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="imageResizer.html">Image Resizer</a></li>
+                            <li><a href="">Color Picker</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+    <section class="tools">
+        <div class="tools-view">
+            <h1 class="resize-settings">Resize Settings</h1>
+            <div class="file"><input type="file" accept=".jpg, .jpeg, .png, .gif" id="imageinput"></div>
+            <div class="size-containers">
+                <div>
+                    <h1>From</h1> <br>
+                    <h2 id="from"></h2>
+                </div>
+                
+            </div>
+            <div class="size-containers2">
+                <div>
+                    <h1>TO</h1> <br>
+                </div>
+                
+            </div>
+            <select id="imageFormat">
+                <option value="jpeg">JPEG</option>
+                <option value="png">PNG</option>
+                <option value="gif">GIF</option>
+                <option value="webp">WEBP</option>
+                <option value="bmp">BMP</option>
+                <option value="tiff">TIFF</option>
+                <option value="svg">SVG</option>
+            </select>
+            <div class="export">
+                <button onclick="Export()">Export</button>
+            </div>
+        </div>
+        <div class="image-view">
+            <img src="" alt="" id="outputimage">
+        </div>
+    </section>
+    <script src="convert.js">
+
+
+    </script>
+</body>
+</html>
