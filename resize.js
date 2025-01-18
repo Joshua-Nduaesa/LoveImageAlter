@@ -69,20 +69,24 @@ height.addEventListener("change", event =>{
     }
 })
 
-function Export(){
-    if (imageinput.value){
+function Export() {
+    if (imageinput.value) {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
     
-        canvas.width = width_number; // Use naturalWidth for original image dimensions
-        canvas.height = height_number; // Use naturalHeight for original image dimensions
+        canvas.width = outputImage.naturalWidth; // Use naturalWidth for original image dimensions
+        canvas.height = outputImage.naturalHeight; // Use naturalHeight for original image dimensions
     
         ctx.drawImage(outputImage, 0, 0, canvas.width, canvas.height);
-    
-        const a = document.createElement("a");
-        a.href = canvas.toDataURL(filetype);
-        a.download = filename;
-        a.click();
-        console.log(imageinput.value)
+        
+        filetype = select.value;
+        canvas.toBlob(blob => {
+            const a = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = `${filename.replace(/\.[^/.]+$/, '')}.${filetype}`;
+            a.click();
+            URL.revokeObjectURL(url); // Clean up the object URL
+        }, `image/${filetype}`);
     }
 }

@@ -49,8 +49,8 @@ select.addEventListener("change", ()=>{
 
 })
 
-function Export(){
-    if (imageinput.value){
+function Export() {
+    if (imageinput.value) {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
     
@@ -60,12 +60,13 @@ function Export(){
         ctx.drawImage(outputImage, 0, 0, canvas.width, canvas.height);
         
         filetype = select.value;
-
-        const a = document.createElement("a");
-        a.href = canvas.toDataURL(`image/${filetype}`);
-        a.download = `${filename.replace(/\.[^/.]+$/, '')}.${filetype}`;
-        a.click();
-        
-        
+        canvas.toBlob(blob => {
+            const a = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = `${filename.replace(/\.[^/.]+$/, '')}.${filetype}`;
+            a.click();
+            URL.revokeObjectURL(url); // Clean up the object URL
+        }, `image/${filetype}`);
     }
 }
