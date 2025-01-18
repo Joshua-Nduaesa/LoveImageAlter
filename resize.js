@@ -74,17 +74,18 @@ function Export() {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
     
-        canvas.width = outputImage.naturalWidth; // Use naturalWidth for original image dimensions
-        canvas.height = outputImage.naturalHeight; // Use naturalHeight for original image dimensions
+        canvas.width = width_number; // Use naturalWidth for original image dimensions
+        canvas.height = height_number; // Use naturalHeight for original image dimensions
     
         ctx.drawImage(outputImage, 0, 0, canvas.width, canvas.height);
         
-        filetype = select.value;
+    
         canvas.toBlob(blob => {
             const a = document.createElement("a");
             const url = URL.createObjectURL(blob);
             a.href = url;
-            a.download = `${filename.replace(/\.[^/.]+$/, '')}.${filetype}`;
+            console.log(filetype)
+            a.download = `${filename.replace(/\.[^/.]+$/, '')}.${filetype.replace("image/", "")}`;
             a.click();
             URL.revokeObjectURL(url); // Clean up the object URL
         }, `image/${filetype}`);
