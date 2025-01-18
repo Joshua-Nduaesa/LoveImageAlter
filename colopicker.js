@@ -10,6 +10,7 @@ const s = document.querySelector("#s");
 const l = document.querySelector("#l");
 const hex = document.querySelector("#hex");
 const colorformat = document.querySelector("#colroformat")
+const copied = document.querySelector(".copied")
 
 let brightness = localStorage.getItem("brightness") === "true"; // Convert string to boolean
 if (brightness){
@@ -68,7 +69,11 @@ function Copy() {
     }).catch(err => {
         console.error('Error copying text to clipboard: ', err);
     });
+    copied.classList.add('animate')
 }
+copied.addEventListener('animationend', () => {
+    copied.classList.remove('animate');
+}, { once: true }); // Ensures the event listener is removed after it triggers once
 
 
 function hexToRgb(hex) {
